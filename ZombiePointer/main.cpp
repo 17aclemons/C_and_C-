@@ -16,7 +16,7 @@ using namespace std;
 	void displayRoom(int);
 
 	//Declare a const global variable to point "stunned" zombies at
-	char* const stunned = NULL; 
+	char*  stunned = NULL; 
 	
 	//1. accept as command line inputs: number of rooms, max number of zombies, and zombie 
 	//regeneration rate (done)
@@ -73,7 +73,9 @@ using namespace std;
 	//1 2 3 4 5 6 7
 	displayRoom(numOfRooms);
 	//8. Prompt user to pick a room to "shoot" in. 
-	cout << "Pick a room to shoot" << endl; 
+	cout << "Pick a room to shoot" << endl;
+	int shoot; 
+	cin >> shoot;  
 	//9. Reveal the current zombie distribution. Example: E E Z E E Z Z E E. 
 	
 	bool z = false;
@@ -92,7 +94,11 @@ using namespace std;
 	}
 	//10.  Check to see if and how many zombies pointed at that room. Point all zombies that 
 	//were in that room to the "stunned" constant. 
-
+	for(int i = 0; i < currentZomb; i++){
+		if(*(zombies[i]) == area[shoot]){
+			zombies[i] = stunned; 
+		}
+	}
 	//11. Report zombies left and change all rooms to 'E.'
 
 	//12. Cycle through the zombie pointer array. Point each zombie at a new random location 
@@ -106,7 +112,7 @@ using namespace std;
 		currentZomb = 0; 
 		}
 	//15. Report success
-
+	//cout << "Good Fucking job" << endl; 
 	}
 
 
