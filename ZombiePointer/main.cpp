@@ -100,7 +100,12 @@ using namespace std;
 		}
 	}
 	//11. Report zombies left and change all rooms to 'E.'
-
+	for(int i = 0; i < numOfRooms; i++){
+		area[i] = 'E'; 
+		
+	}
+	cout << endl;
+	displayRoom(numOfRooms);
 	//12. Cycle through the zombie pointer array. Point each zombie at a new random location 
 	//unless it is stunned. For each stunned zombie offer a chance of regeneration based on 
 	//the regeneration rate. For example, 3 would indicate a 3% chance it would regenerate. 
@@ -109,7 +114,7 @@ using namespace std;
 	//13. If all zombies are dead, terminate loop
 
 	//14. End game loop
-		currentZomb = 0; 
+		cin>>currentZomb; 
 		}
 	//15. Report success
 	//cout << "Good Fucking job" << endl; 
