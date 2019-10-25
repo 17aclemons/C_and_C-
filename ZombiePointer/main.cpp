@@ -63,7 +63,7 @@ using namespace std;
 	placeZombies(area, numOfRooms, zombies, maxZom);
 	
 	//6. Start game loop
-		while(currentZomb >0){
+		while(currentZomb > 0){
 			
 		
 	//7. Display rooms as '*' place numbers underneath so the user can easily see where they 
@@ -92,6 +92,7 @@ using namespace std;
 		}
 		z = false; 	
 	}
+	cout << endl;
 	//10.  Check to see if and how many zombies pointed at that room. Point all zombies that 
 	//were in that room to the "stunned" constant. 
 	for(int i = 0; i < currentZomb; i++){
@@ -104,17 +105,17 @@ using namespace std;
 		area[i] = 'E'; 
 		
 	}
-	cout << endl;
-	displayRoom(numOfRooms);
+	cout << "There are " << currentZomb << " zombies left" << endl;
+	
 	//12. Cycle through the zombie pointer array. Point each zombie at a new random location 
 	//unless it is stunned. For each stunned zombie offer a chance of regeneration based on 
 	//the regeneration rate. For example, 3 would indicate a 3% chance it would regenerate. 
 	//(You can do this by selecting a random number from 1 to 100.)
-
+	placeZombies(area, numOfRooms, zombies, maxZom);
 	//13. If all zombies are dead, terminate loop
 
 	//14. End game loop
-		cin>>currentZomb; 
+		
 		}
 	//15. Report success
 	//cout << "Good Fucking job" << endl; 
@@ -124,10 +125,11 @@ using namespace std;
 	//function for zombie placement in rooms
 	void placeZombies(char* room, int sizeOfRoom, char** zombies, int numZom){
 		for(int i = 0; i < numZom; i++){
-			//if(*(zombie[i]) != stunned){
+			if(*(zombie[i]) != stunned){
+				//delete the zombie in here
+			}
 			int rng = rand() % sizeOfRoom; 
 			zombies[i] = &room[rng];
-			//}
 			room[rng] = 'Z'; 
 		}	
 	}
