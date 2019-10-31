@@ -1,0 +1,11 @@
+Bytes 0 - 1 File Signature 0x424D --> "BM"
+Bytes 2 - 5 File Size
+Bytes 10 - 13 Starting address, of pixel array
+BGRA values stored as a xy grid with padding
+
+
+Converting methods
+
+Lightness method: (max(R,G,B) + min (R,G,B)) / 2
+Average method: (R+G+B)/3
+Luminosity method: .21 * R + .72 * G + .07 * B
