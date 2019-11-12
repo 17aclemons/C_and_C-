@@ -14,15 +14,15 @@ int main()
 
 	if (!inf)
 	{
-		cerr << "unable to open file for writing!" << endl; exit(1);
+		cerr << "unable to open file for writing!" << endl;
 	}
 
 	
-	while(inf)
+	/*while(inf)
 	{
 		inf >> b;
 		std::cout << std::hex << +b;
-	}
+	}*/
 
 	//1. instead of looping just get the first two unsigned chars and check them
 	
