@@ -57,7 +57,8 @@ int main(int argc, char* argv[]) {
 	}
 	
 	//3. append conversion method to file name
-	int method = stoi(argv[1]); //convert conversion string to int
+	//int method = stoi(argv[1]); //convert conversion string to int
+	int method = 1; 
 	//check for proper input
 	if(method > 3 || method < 1){
 		method = 1; 
