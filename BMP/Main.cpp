@@ -9,14 +9,10 @@ Fall 2019
 #include <ostream>
 #include <cstdlib> // for exit
 #include <string>
-#include <algorithm> // for max
+#include <algorithm>
 #include <vector>
 
 using namespace std;
-
-
-
-
 
 int main(int argc, char* argv[]) {
 	//argv[1] is the method chosen
@@ -31,9 +27,11 @@ int main(int argc, char* argv[]) {
 	vector<unsigned char> bmp;
 
 	while(inf){
-		unsigned char temp;
+		if(!inf.eof()){
+		char temp;
 		inf >> hex >> temp;
 		bmp.push_back(temp);
+		}
 	}
 	inf.close();
 	
@@ -53,6 +51,7 @@ int main(int argc, char* argv[]) {
 	cout << "file size is: " << size << endl;
 	
 	if(size != bmp.size()){
+		cout << bmp.size() << endl; 
 		cerr << "File size indicated isn't the amount read in " << endl; exit(1);
 	}
 	
@@ -75,14 +74,21 @@ int main(int argc, char* argv[]) {
 				cerr << "unable to open file for writing!" << endl;
 				exit(1);
 			}
-			
-			for(int i = 10; i < 20; i++){
-				int compare = max(max(bmp[i],bmp[i+1]),bmp[i+2]);
+			for(int i = 0; i < 10; i++){
+				outf << bmp[i]; 
+			}
+			for(int i = 10; i < bmp.size()-1; i+=4){
+				int blue = bmp[i];
+				int green = bmp[i+1];
+				int red = bmp[i+2];
 				
-				compare = min(bmp[i],bmp[i+1]);
-				int min = min(bmp[i+2],compare);
+				int large = max(max(blue,green),red);
 				
-				unsigned char output = (max + min)/2;
+				int small = min(min(blue,green),red);
+				
+				unsigned char output = (large + small)/2;
+				
+				outf << output; 
 			}
 		
 		outf.close();
@@ -97,7 +103,19 @@ int main(int argc, char* argv[]) {
 				cerr << "unable to open file for writing!" << endl;
 				exit(1);
 			}
-			
+			for(int i = 0; i < 10; i++){
+				outf << bmp[i]; 
+			}
+			for(int i = 10; i < bmp.size(); i+=4){
+				int blue = bmp[i];
+				int green = bmp[i+1];
+				int red = bmp[i+2];
+				
+				unsigned char output = ((blue+green+red)/3);
+				
+				outf << output; 
+			}
+				outf.close();
 		
 	}else if(method == 3){
 		//lumonosity method Luminosity method: .21 * R + .72 * G + .07 * B
@@ -111,6 +129,19 @@ int main(int argc, char* argv[]) {
 				cerr << "unable to open file for writing!" << endl;
 				exit(1);
 			}
+			for(int i = 0; i < 10; i++){
+				outf << bmp[i]; 
+			}
+			for(int i = 10; i < bmp.size(); i+=4){
+				int blue = bmp[i];
+				int green = bmp[i+1];
+				int red = bmp[i+2];
+				
+				unsigned char output = ((.21*red) + (.72 * green) + (.07 * blue));
+				
+				outf << output;
+			}
+				outf.close();
 	}
 		
 	
