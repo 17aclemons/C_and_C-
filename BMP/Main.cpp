@@ -15,6 +15,7 @@ Fall 2019
 using namespace std;
 
 int main(int argc, char* argv[]) {
+	cout << "this worked" << endl; 
 	//argv[1] is the method chosen
 	//argv[2] is file converted
 	
