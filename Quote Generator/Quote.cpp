@@ -5,14 +5,13 @@
 
 using namespace std; 
 
-class Quote {
-    public: 
-    string quote; 
-
-    Quote(string sentance){ // constructor
+    Quote::Quote(string sentance){ // constructor
         quote = sentance; 
     }
 
-    ~Quote (); // destructor
-};
+    string Quote::getQuote(){
+       return quote;
+    }
+
+    Quote::~Quote (){} // destructor
 

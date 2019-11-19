@@ -5,17 +5,15 @@
 using namespace std; 
 
 class Quote{
-    public:
-    string quote; 
+    public: 
     
-    Quote(string sentance);
-    ~Quote();
+     Quote(string sentance);
 
-    string getQuote(){
-        return quote;
-    }
-    
+    string getQuote();
+   
+    ~Quote();
     private:
+     string quote;
 };
 
 #endif
