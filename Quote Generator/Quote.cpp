@@ -1,5 +1,6 @@
-#ifndef QUOTE_H
-#define QUOTE_H
+
+
+#include "Quote.h"
 #include <string>
 
 using namespace std; 
@@ -15,4 +16,3 @@ class Quote {
     ~Quote (); // destructor
 };
 
-#endif
