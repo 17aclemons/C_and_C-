@@ -12,35 +12,36 @@ using namespace std;
 vector<Quote> createVector(string fileName);
 void addQuote(vector<Quote> quoteVector); 
 void randomQuote(vector<Quote> quoteVector);
+void removeQuote(vector<Quote> quoteVector);
+void getSpecificQuote(vecot<Quote> quoteVector);
 
 int main(int argc, char* argv[]){
     
     if(argc == 2){
         
         vector<Quote> option1 = createVector(argv[1]);
-        
+        randomQuote(option1); 
+
     }else if(argc == 1){
-        vector<Quote> option2 = createVector(file); 
+        vector<Quote> option2 = createVector(""); 
 
         cout << "1. Get random quote" << endl;
         cout << "2. Add quote" << endl;
         cout << "3. Remove quote by line"<< endl; 
         cout << "4. Get specific quote by line" << endl; 
         cout << "5. Get number of current quotes" << endl;
-        
+
         int input;
         cin >> input;
 
         if(input == 1){
-        int random = rand() % option2.size();
-        string temp = option2[random].getQuote();
-        cout << temp << endl; 
+            randomQuote(option2); 
         }else if(input == 2){
             addQuote(option2); 
         }else if(input == 3){
-
+            remove(option2);
         }else if(input == 4){
-
+            
         }else if(input == 5){
 
         }else {
@@ -78,7 +79,6 @@ vector<Quote> createVector(string fileName = ""){
 
 
 void randomQuote(vector<Quote> quoteVector){
-
     int random = rand() % quoteVector.size();   
     string temp = quoteVector[random].getQuote();
     cout << temp << endl; 
@@ -91,4 +91,30 @@ void addQuote(vector<Quote> quoteVector){
     cin >> newQuote; 
     Quote test(newQuote);
     quoteVector.push_back(test); 
+}
+
+void removeQuote(vector<Quote> quoteVector){
+    for(int i = 0; i < quoteVector.size(); i ++){
+        cout << i << "." << quoteVector[i].getQuote() << endl; 
+    }
+
+    cout << "What line do you want to delete" << endl; 
+    int remove; 
+    cin >> remove; 
+
+    quoteVector.erase(quoteVector.begin() + remove); 
+
+    cout << "line " << remove << "was deleted" << endl; 
+}
+
+void getSpecificQuote(vecot<Quote> quoteVector){
+    for(int i = 0; i < quoteVector.size(); i ++){
+        cout << i << "." << quoteVector[i].getQuote() << endl; 
+    }
+
+    cout << "What specific line do you want" << endl; 
+    int get;
+    cin >> get;
+
+    cout << "Requested Quote" << endl; 
 }
