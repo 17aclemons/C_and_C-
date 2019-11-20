@@ -13,7 +13,8 @@ vector<Quote> createVector(string fileName);
 void addQuote(vector<Quote> quoteVector); 
 void randomQuote(vector<Quote> quoteVector);
 void removeQuote(vector<Quote> quoteVector);
-void getSpecificQuote(vecot<Quote> quoteVector);
+void specificQuote(vector<Quote> quoteVector);
+void numberOfQuotes(vector<Quote> quoteVector);
 
 int main(int argc, char* argv[]){
     
@@ -39,16 +40,17 @@ int main(int argc, char* argv[]){
         }else if(input == 2){
             addQuote(option2); 
         }else if(input == 3){
-            remove(option2);
+            removeQuote(option2);
         }else if(input == 4){
-            
+            specificQuote(option2);
         }else if(input == 5){
-
+            numberOfQuotes(option2);
         }else {
             cout << "invalid input" << endl;
         }
-
+        delete option2; 
     }
+    delete option1; 
 }
 
 vector<Quote> createVector(string fileName = ""){
@@ -91,6 +93,8 @@ void addQuote(vector<Quote> quoteVector){
     cin >> newQuote; 
     Quote test(newQuote);
     quoteVector.push_back(test); 
+
+    cout << "Quote was added" << endl; 
 }
 
 void removeQuote(vector<Quote> quoteVector){
@@ -104,10 +108,10 @@ void removeQuote(vector<Quote> quoteVector){
 
     quoteVector.erase(quoteVector.begin() + remove); 
 
-    cout << "line " << remove << "was deleted" << endl; 
+    cout << "line " << remove << " was deleted" << endl; 
 }
 
-void getSpecificQuote(vecot<Quote> quoteVector){
+void specificQuote(vector<Quote> quoteVector){
     for(int i = 0; i < quoteVector.size(); i ++){
         cout << i << "." << quoteVector[i].getQuote() << endl; 
     }
@@ -117,4 +121,9 @@ void getSpecificQuote(vecot<Quote> quoteVector){
     cin >> get;
 
     cout << "Requested Quote" << endl; 
+    cout << quoteVector[get].getQuote() << endl; 
+}
+
+void numberOfQuotes(vector<Quote> quoteVector){
+    cout << quoteVector.size() << endl; 
 }
