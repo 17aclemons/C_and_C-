@@ -12,7 +12,7 @@ using namespace std;
 
 Stock::Stock(string csv, string name) // constructor
     {
-
+        
         ifstream inf(csv.c_str());
 
         if (!inf)
@@ -44,7 +44,7 @@ Stock::Stock(string csv, string name) // constructor
             AdjClose.push_back(temp[4]);
             Volume.push_back(temp[5]);
 
-            
+            setCounter(0);
                         //initialize the counter
                         //so when referenceing values in the vector
                         //it starts at the beginning of the data that
@@ -52,6 +52,21 @@ Stock::Stock(string csv, string name) // constructor
         }
     }
 
+    void Stock::setCounter(int ct){
+        counter = ct; 
+    }
+
+    int Stock::getCounter(){
+        return counter; 
+    }
+
+    void Stock::setTitle(string name){
+        title = name; 
+    }
+
+    string Stock::getTitle(){
+        return title; 
+    }
     
 
 Stock::~Stock (){}

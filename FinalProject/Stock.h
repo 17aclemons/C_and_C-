@@ -10,8 +10,6 @@ using namespace std;
 class Stock{
     private:
     vector<string> Date;
-    int counter; // used to change the range of dates
-                         //use with other vector to keep information the same
     vector<double> Open; 
     vector<double> High;
     vector<double> Low;
@@ -19,12 +17,17 @@ class Stock{
     vector<double> AdjClose;
     vector<double> Volume;
     
-
+    string title;
+    int counter; // used to change the range of dates
+                 //use with other vector to keep information the same
+  
     public: 
      Stock(string csv, string name);
     ~Stock();
-    void printDate(Stock st);
     void setCounter(int ct);
+    int getCounter();
+    void setTitle(string title);
+    string getTitle();
 };
 
 #endif
