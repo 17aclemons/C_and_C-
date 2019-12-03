@@ -71,21 +71,4 @@ Stock::Stock(string csv, string name) // constructor
 
 Stock::~Stock (){}
 
-//each stock has a day vector
-//open vector
-//close vector
-//volume vector
-//high vector
-//volume vecotor
-
-/*
-ofstream outf("test.txt");
-	
-	if (!outf) {
-		cerr << "Failed" << endl; 
-	}
-     string day; 
-    while(getline(inf, day)){
-        outf << day << endl; 
-    }
-    */
+//add stock calculation functions
