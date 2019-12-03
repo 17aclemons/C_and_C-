@@ -1,6 +1,3 @@
-// Final Project.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 /*
 Andrew Clemons
 C and C++
@@ -17,7 +14,6 @@ Final Project
 #include <iostream>
 #include <fstream> 
 #include <ostream>
-#include <cstdlib> //for exit
 #include "Stock.h"
 
 using namespace std;
