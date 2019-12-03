@@ -11,45 +11,37 @@ Final Project
 4. cout trade probability
 */
 
-#include <iostream>
-#include <fstream> 
-#include <ostream>
 #include "Stock.h"
-
+#include <iostream>
 using namespace std;
-int main() {
-    cout << "Enter file name of Historical stock data" << endl; 
-    string file; 
-    cin >> file; 
-	cout << "Whats the name of the organization" << endl;
-    string name;
-    cin >> name; 
-    Stock  one (file,name);
+int main()
+{
+    cout << "Download the csv files you want from Yahoo Finance" << endl;
+    cout <<" and put it in the same folder as the executable" << endl;
+    int stopCondition;
+    while (stopCondition != 0)
+    {
+        cout << "" << endl; 
+        cout << "Enter file name of Historical stock data" << endl;
+        string file;
+        cin >> file;
+        cout << "Whats the name of the organization" << endl;
+        string name;
+        cin >> name;
+        Stock one(file, name);
+        cout << "Stock " << name << "was created" << endl;
+        cout << "" << endl; 
+        cout << "Press zero if you want to quit or press 1 make a new stock" << endl;
 
+        one.typicalPrice();
+    }
 }
 
 /*
 Rubric
 Create an application in C++ complex enough to demonstrate the majority of presented concepts.
 
-Project must demonstrate basic concepts.
+Project must include C++ exception handling. not done
 
-Project must demonstrate object oriented programming.
-
-Project must demonstration operator overloading with a unique class type.
-
-Project must include C++ exception handling.
-
-Project must demonstrate a concept not reviewed in class.
+Project must demonstrate a concept not reviewed in class. not done
 */
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

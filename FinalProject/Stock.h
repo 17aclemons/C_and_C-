@@ -28,6 +28,9 @@ class Stock{
     int getCounter();
     void setTitle(string title);
     string getTitle();
+    Stock operator++();
+    void typicalPrice();
+
 };
 
 #endif
