@@ -11,14 +11,19 @@
 using namespace std;
 
 Stock::Stock(string csv, string name) // constructor
+{
+    if (csv == "")
     {
-        if(csv == ""){
-            cerr << "CSV file not included" << endl;
-            exit(1); 
-        }else if(name == ""){
-            cerr << "Name was left null" << endl;
-            exit(1);
-        }else{
+        cerr << "CSV file not included" << endl;
+        exit(1);
+    }
+    else if (name == "")
+    {
+        cerr << "Name was left null" << endl;
+        exit(1);
+    }
+    else
+    {
 
         ifstream inf(csv.c_str());
 
@@ -34,16 +39,17 @@ Stock::Stock(string csv, string name) // constructor
             istringstream ss(line);
             //First part of a line is a string
             string token;
-            getline(ss,token,',');
+            getline(ss, token, ',');
             Date.push_back(token);
 
             //rest of the token is doubles
-            double temp [5];
+            double temp[5];
             double dTemp;
             //fill a temp array
-            for(int i = 0; i < 5; i++){
-                getline(ss,token,',');
-                temp[i] = dTemp; 
+            for (int i = 0; i < 5; i++)
+            {
+                getline(ss, token, ',');
+                temp[i] = dTemp;
             }
             //use the temp array to push the data onto vectors
             Open.push_back(temp[0]);
@@ -54,54 +60,61 @@ Stock::Stock(string csv, string name) // constructor
             Volume.push_back(temp[5]);
 
             setCounter(1);
-                        //initialize the counter, ignore the header
-                        //so when referenceing values in the vector
-                        //it starts at the beginning of the data that
-                        //has been read in
+            //initialize the counter, ignore the header
+            //so when referenceing values in the vector
+            //it starts at the beginning of the data that
+            //has been read in
         }
-        }
     }
+}
 
-    void Stock::setCounter(int ct){
-        counter = ct; 
+void Stock::setCounter(int ct)
+{
+    counter = ct;
+}
+
+int Stock::getCounter()
+{
+    return counter;
+}
+
+void Stock::setTitle(string name)
+{
+    title = name;
+}
+
+string Stock::getTitle()
+{
+    return title;
+}
+
+//increment the counter to shorten the amount of data looked at
+Stock Stock::operator++()
+{
+    ++counter;
+    return *this;
+}
+
+void Stock::typicalPrice()
+{
+
+    vector<double> tp;
+    double temp;
+    double total;
+    double smallest;
+    double highest;
+    //fill the vector with the average price per day
+    for (int i = counter; i < Date.size(); i++)
+    {
+        temp = (High[i] + Low[i] + Close[i] / 3);
+        total += temp;
     }
+    int days = Date.size() - counter;
+    double typicalPrice = (temp / days);
 
-    int Stock::getCounter(){
-        return counter; 
-    }
+    cout << "the typical price over " << days << " days is " << typicalPrice << " dollars" << endl;
+}
 
-    void Stock::setTitle(string name){
-        title = name; 
-    }
-
-    string Stock::getTitle(){
-        return title; 
-    }
-    
-    //increment the counter to shorten the amount of data looked at
-    Stock Stock::operator++(){
-        ++counter;
-        return *this;
-    }
-
-    void Stock::typicalPrice(){
-
-        vector<double> tp;
-        double temp;
-        double total;
-        double smallest;
-        double highest;
-        //fill the vector with the average price per day
-        for(int i = counter; i < Date.size(); i++){
-            temp = (High[i] + Low[i] + Close[i]/ 3);
-            total += temp;
-        }
-        int days = Date.size()-counter;
-        double typicalPrice = (temp/days); 
-
-        cout << "the typical price over " << days << " days is " << typicalPrice << " dollars" << endl;
-    }
-
-Stock::~Stock (){}
+Stock::~Stock() {}
 
 //add stock calculation functions

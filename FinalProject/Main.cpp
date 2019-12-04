@@ -31,17 +31,17 @@ int main()
         Stock one(file, name);
         cout << "Stock " << name << "was created" << endl;
         cout << "" << endl; 
-        cout << "Press zero if you want to quit or press 1 make a new stock" << endl;
 
         one.typicalPrice();
+
+        cout << "Press zero if you want to quit or press 1 make a new stock" << endl;
+
     }
 }
 
 /*
 Rubric
 Create an application in C++ complex enough to demonstrate the majority of presented concepts.
-
-Project must include C++ exception handling. not done
 
 Project must demonstrate a concept not reviewed in class. not done
 */
