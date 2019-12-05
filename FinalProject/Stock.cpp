@@ -95,11 +95,11 @@ Stock Stock::operator++()
     return *this;
 }
 
-void Stock::typicalPrice()
+double Stock::typicalPrice()
 {
 
     vector<double> tp;
-    double temp;
+    double temp = 0;
     double total;
     double smallest;
     double highest;
@@ -113,8 +113,27 @@ void Stock::typicalPrice()
     double typicalPrice = (temp / days);
 
     cout << "the typical price over " << days << " days is " << typicalPrice << " dollars" << endl;
+    return typicalPrice;
+}
+
+double Stock::moneyFlow(){
+    double tp = typicalPrice();
+    double totalVolume;
+    int days = Date.size() - counter; 
+    for(int i = counter; i < Date.size(); i++){
+        totalVolume += Volume[i];
+    }
+    double avgVolume = (totalVolume / Date.size());
+
+    cout << "the Money Flow price over "<< days << " days is " << tp*avgVolume << " dollars" << endl; 
+    return tp*avgVolume;
 }
 
 Stock::~Stock() {}
 
-//add stock calculation functions
+int main(){
+    Stock one("test.csv", "test");
+    one.typicalPrice();
+    cout << one.High[1] << endl;
+    cout << one.Low[1] << endl;
+}

@@ -9,6 +9,9 @@ using namespace std;
 
 class Stock{
     private:
+    
+  
+    public: 
     vector<string> Date;
     vector<double> Open; 
     vector<double> High;
@@ -20,8 +23,6 @@ class Stock{
     string title;
     int counter; // used to change the range of dates
                  //use with other vector to keep information the same
-  
-    public: 
      Stock(string csv, string name);
     ~Stock();
     void setCounter(int ct);
@@ -29,8 +30,9 @@ class Stock{
     void setTitle(string title);
     string getTitle();
     Stock operator++();
-    void typicalPrice();
-
+    double typicalPrice();
+    double moneyFlow();
+    
 };
 
 #endif

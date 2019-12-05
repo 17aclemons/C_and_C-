@@ -29,13 +29,32 @@ int main()
         string name;
         cin >> name;
         Stock one(file, name);
-        cout << "Stock " << name << "was created" << endl;
-        cout << "" << endl; 
-
-        one.typicalPrice();
-
+        cout << "Stock " << name << " was created" << endl;
+        cout << "" << endl;
+            while(stopCondition != 0){
+                int choice;
+                cout << "1.get Counter" << endl;
+                cout << "2. set Counter" << endl;
+                cout << "3. get the average Typical Price of " << one.getTitle() << endl;
+                cout << "4. get the average Money Flow of " << one.getTitle() << endl; 
+                cin >> choice;
+                if(choice =1){
+                    one.getCounter();
+                }else if(choice = 2){
+                    cout << "How many days do back do you want to look at" << endl;
+                    int days;
+                    cin >> days;
+                    one.setCounter(days);
+                }else if(choice = 3){
+                    one.typicalPrice();
+                }else if(choice = 4){
+                    one.moneyFlow();
+                }else if(choice = 0){
+                    break;
+                }
+            }
         cout << "Press zero if you want to quit or press 1 make a new stock" << endl;
-
+        cin >> stopCondition;
     }
 }
 
