@@ -34,22 +34,24 @@ Stock::Stock(string csv, string name) // constructor
         }
 
         string line;
+		//through out the headers;
+		getline(inf, line);
         while (getline(inf, line))
         {
-            istringstream ss(line);
-            //First part of a line is a string
+            stringstream ss(line);
+			//first token is the Date
             string token;
             getline(ss, token, ',');
-            
             Date.push_back(token);
 
             //rest of the token is doubles
             double temp[5];
-            double dTemp;
+			
             //fill a temp array
             for (int i = 0; i < 5; i++)
             {
-               dTemp = stod(getline(ss, token, ','));
+				getline(ss, token, ',');
+				double dTemp = stod(token);
                 
                 temp[i] = dTemp;
             }
@@ -60,7 +62,7 @@ Stock::Stock(string csv, string name) // constructor
             Close.push_back(temp[3]);
             AdjClose.push_back(temp[4]);
             Volume.push_back(temp[5]);
-
+		
             setCounter(1);
             //initialize the counter, ignore the header
             //so when referenceing values in the vector
