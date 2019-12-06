@@ -40,6 +40,7 @@ Stock::Stock(string csv, string name) // constructor
             //First part of a line is a string
             string token;
             getline(ss, token, ',');
+            
             Date.push_back(token);
 
             //rest of the token is doubles
@@ -48,7 +49,8 @@ Stock::Stock(string csv, string name) // constructor
             //fill a temp array
             for (int i = 0; i < 5; i++)
             {
-                getline(ss, token, ',');
+               dTemp = stod(getline(ss, token, ','));
+                
                 temp[i] = dTemp;
             }
             //use the temp array to push the data onto vectors
@@ -130,10 +132,3 @@ double Stock::moneyFlow(){
 }
 
 Stock::~Stock() {}
-
-int main(){
-    Stock one("test.csv", "test");
-    one.typicalPrice();
-    cout << one.High[1] << endl;
-    cout << one.Low[1] << endl;
-}
